@@ -4,10 +4,10 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
-import { RevervasModule } from './revervas/revervas.module';
+
 
 @Module({
-  imports: [UsersModule,
+  imports: [
   TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
@@ -18,8 +18,8 @@ import { RevervasModule } from './revervas/revervas.module';
     autoLoadEntities: true,
     synchronize: true,
   }),
-  BooksModule,
-  RevervasModule],
+  UsersModule,
+  BooksModule,],
   controllers: [AppController],
   providers: [AppService],
 })

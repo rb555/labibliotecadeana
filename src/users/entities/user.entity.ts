@@ -1,5 +1,6 @@
 import { Book } from "src/books/entities/book.entity";
 import { Column, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+ 
 
 @Entity()
 export class User {
@@ -19,6 +20,11 @@ export class User {
     @DeleteDateColumn()
     deleteAt: Date;
 
-    @ManyToOne(() => Book, (book) => book.id)
+    @ManyToOne(() => Book, (book) => book.id,{
+        eager: true,  //nos trae todos los libros al hacer el findOne
+    })
     book: Book;
+
+    
+    
 }
